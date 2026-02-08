@@ -6,7 +6,7 @@ from app import crud
 
 router = APIRouter()
 
-
+@router.post("")
 @router.post("/")
 def mark_attendance(
     attendance: AttendanceCreate,
