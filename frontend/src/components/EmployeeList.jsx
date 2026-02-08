@@ -7,7 +7,7 @@ export default function EmployeeList({ refresh }) {
 
   const fetchEmployees = async () => {
     try {
-      const res = await api.get("/employees");
+      const res = await api.get("/employees/");
       setEmployees(res.data);
     } catch (err) {
       console.error("Failed to load employees", err);

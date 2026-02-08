@@ -10,7 +10,7 @@ export default function AttendanceForm() {
 
   const submit = async (e) => {
     e.preventDefault();
-    await api.post("/attendance", form);
+    await api.post("/attendance/", form);
     alert("Attendance marked successfully");
     setForm({ employee_id: "", date: "", status: "Present" });
   };
