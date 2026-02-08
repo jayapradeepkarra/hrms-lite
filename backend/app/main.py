@@ -21,7 +21,7 @@ app = FastAPI(
 # )
 
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware," "
     allow_origins=["*"],   # allow all for demo
     allow_methods=["*"],
     allow_headers=["*"],
