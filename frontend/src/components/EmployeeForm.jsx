@@ -13,8 +13,8 @@ export default function EmployeeForm({ onSuccess }){
 
 const submit = async (e) => {
   e.preventDefault();
-  console.log("POSTING TO /employees", form);
-  await api.post("/employees", form);
+ console.log("POSTING TO /employees/", form);
+  await api.post("/employees/", form);
   onSuccess();     // 🔁 refresh list
   alert("Employee added successfully");
     setForm({ employee_id: "", full_name: "", email: "", department: "" });
