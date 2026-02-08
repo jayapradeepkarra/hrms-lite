@@ -11,6 +11,7 @@ router = APIRouter()
 def list_employees(db: Session = Depends(get_db)):
     return crud.get_all_employees(db)
 
+@router.post("")
 @router.post("/")
 def create_employee(
     employee: EmployeeCreate,
