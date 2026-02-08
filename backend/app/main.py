@@ -29,10 +29,16 @@ def startup():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # allow all for demo
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://your-vercel-project-name.vercel.app"
+    ],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 app.include_router(employee_router, prefix="/employees", tags=["Employees"])
 app.include_router(attendance_router, prefix="/attendance", tags=["Attendance"])
