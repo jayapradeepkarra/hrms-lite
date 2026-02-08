@@ -22,14 +22,6 @@ def get_all_employees(db: Session):
 
 
 def create_employee(db: Session, employee):
-    # 🔒 Prevent duplicates
-    existing = employee_exists(db, employee.employee_id, employee.email)
-    if existing:
-        raise HTTPException(
-            status_code=400,
-            detail="Employee ID or Email already exists"
-        )
-
     try:
         db_emp = Employee(
             employee_id=employee.employee_id,
@@ -44,11 +36,11 @@ def create_employee(db: Session, employee):
 
     except IntegrityError:
         db.rollback()
-        raise HTTPException(
-            status_code=400,
-            detail="Failed to create employee (duplicate or invalid data)"
-        )
+        raise ValueError("Employee ID or Email already exists")
 
+    except Exception as e:
+        db.rollback()
+        raise e
 
 def delete_employee(db: Session, employee_id: str):
     emp = (
